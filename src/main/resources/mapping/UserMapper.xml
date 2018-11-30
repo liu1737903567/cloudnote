@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oracle.cloudnote.dao">
+    <insert id="add" parameterType="com.oracle.cloudnote.bean.User">
+        insert into cn_user(cn_user_id, cn_user_name, cn_user_nickname, cn_user_password) values(#{id},#{name},#{nickname},#{password})
+    </insert>
+    <select id="findByName" parameterType="string" resultType="com.oracle.cloudnote.bean.User">
+        select <include refid="col"/> from cn_user u where cn_user_name = #{name}
+    </select>
+    <update id="updatePassword" parameterType="com.oracle.cloudnote.bean.User">
+        update user set cn_user_password = #{password} where cn_user_id = #{id}
+    </update>
+</mapper>
